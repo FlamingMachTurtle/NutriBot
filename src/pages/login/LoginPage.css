@@ -85,8 +85,15 @@
   box-shadow: 0 0 0 2px rgba(101, 200, 196, 0.2); /* Subtle glow */
 }
 
-.login-button {
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
   width: 100%;
+}
+
+.login-button {
+  flex: 1;
   padding: 12px 15px;
   background-color: var(--login-primary-accent);
   color: white;
@@ -96,11 +103,28 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
 }
 
 .login-button:hover {
   background-color: var(--login-button-hover);
+}
+
+.quick-login-button {
+  flex: 1;
+  padding: 12px 15px;
+  background-color: #f0f0f0;
+  color: var(--login-text-primary);
+  border: 2px solid var(--login-primary-accent);
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quick-login-button:hover {
+  background-color: var(--login-primary-accent);
+  color: white;
 }
 
 .error-message {
@@ -117,5 +141,12 @@
   }
   .login-header h2 {
     font-size: 1.6em;
+  }
+  .button-group {
+    flex-direction: column;
+  }
+  .login-button,
+  .quick-login-button {
+    width: 100%;
   }
 } 

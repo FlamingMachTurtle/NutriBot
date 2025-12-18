@@ -48,6 +48,22 @@ const LoginPage = () => {
     }
   };
 
+  const handleQuickLogin = (e) => {
+    e.preventDefault();
+    setError('');
+    // Auto-fill demo credentials
+    setUsername('testUser');
+    setPassword('password123');
+    // Trigger login
+    login();
+    const hasCompletedOnboarding = localStorage.getItem('hasCompletedOnboarding');
+    if (!hasCompletedOnboarding) {
+      navigate('/onboarding/goals');
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <div className="login-page-container">
       <div className="login-form-card">
@@ -78,7 +94,12 @@ const LoginPage = () => {
             />
           </div>
           {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="login-button">Login</button>
+          <div className="button-group">
+            <button type="submit" className="login-button">Login</button>
+            <button type="button" className="quick-login-button" onClick={handleQuickLogin}>
+              Quick Demo Login
+            </button>
+          </div>
         </form>
         {/* Optional: Links for "Forgot Password?" or "Create Account" can go here */}
       </div>
